@@ -1,4 +1,32 @@
 Function Get-SEPMClient {
+    <#
+    .SYNOPSIS
+        Returns a list of client computers.
+    .DESCRIPTION
+        {{Long description}}
+    .PARAMETER ComputerName
+        The name of the SEPM server.
+    .PARAMETER Port
+        The port for the SEPM API. Defaults to 8446.
+    .PARAMETER ClientName
+        The computername of a clinet to which to return information on.
+    .PARAMETER Token
+        A valid token retrieved from the Get-SEPMAccessToken function.
+    .EXAMPLE
+        PS C:\> Get-SEPMClient -ComputerName 'server1' -Token <valid token>
+
+        This example will return a list of all client computers.
+    .EXAMPLE
+        PS C:\> Get-SEPMClient -ComputerName 'server1' -ClientName 'client1' -Token <valid token>
+
+        This example will return information on a computer named 'client1'.
+    .INPUTS
+        None
+    .OUTPUTS
+        PSObject
+    .LINK
+        https://apidocs.symantec.com/home/saep#_getcomputers
+    #>
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory=$True,Position=0)]

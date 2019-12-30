@@ -1,4 +1,22 @@
 Function Get-SEPMAccessToken {
+    <#
+    .SYNOPSIS
+        Retrieves an Access Token to an On-Premise SEPM server for the purposes of using it's API.
+    .DESCRIPTION
+        Retrieves an Access Token to an On-Premise SEPM server for the purposes of using it's API by asking for credentials to
+        a SEPM administrator. This function will ask for a username and password to pass and will return a UserToken object from
+        the SEPM server. The Token property is the property to use when calling any other SEPM function except for Get-Version.
+    .EXAMPLE
+        PS C:\> Get-SEPMAccessToken
+
+        This example runs the function which will then ask for a username and password.
+    .INPUTS
+        None
+    .OUTPUTS
+        PSObject
+    .LINK
+        https://apidocs.symantec.com/home/saep#_authenticateuser
+    #>
     [CmdletBinding()]
     Param()
     [System.Net.ServicePointManager]::ServerCertificateValidationCallback = { $True }

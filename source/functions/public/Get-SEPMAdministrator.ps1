@@ -1,4 +1,32 @@
 Function Get-SEPMAdministrator {
+    <#
+    .SYNOPSIS
+        Returns SEPM administrators along with information about those accounts.
+    .DESCRIPTION
+        {{Long description}}
+    .PARAMETER ComputerName
+        The name of the SEPM server.
+    .PARAMETER Port
+        The port for the SEPM API. Defaults to 8446.
+    .PARAMETER UserName
+        A Username of an administrator for which to return information on.
+    .PARAMETER Token
+        A valid token retrieved from the Get-SEPMAccessToken function.
+    .EXAMPLE
+        PS C:\> Get-SEPMAdministrator -ComputerName 'server1' -Token <valid token>
+
+        This example will return a list of all administrators.
+    .EXAMPLE
+        PS C:\> Get-SEPMAdministrator -ComputerName 'server1'  -Username admin -Token <valid token>
+
+        This example will return information on just the administrator account named 'admin'.
+    .INPUTS
+        None
+    .OUTPUTS
+        PSObject
+    .LINK
+        https://apidocs.symantec.com/home/saep#_getalladminuserdetails
+    #>
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory=$True,Position=0)]

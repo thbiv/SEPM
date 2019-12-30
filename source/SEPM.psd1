@@ -4,7 +4,7 @@
 RootModule = 'SEPM.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.0.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -25,7 +25,7 @@ Copyright = '2019'
 Description = 'Module for using SEPM API'
 
 # Minimum version of the Windows PowerShell engine required by this module
-PowerShellVersion = '5.0'
+PowerShellVersion = '5.1'
 
 # Name of the Windows PowerShell host required by this module
 # PowerShellHostName = ''
@@ -61,7 +61,16 @@ PowerShellVersion = '5.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = @(
+    'Get-SEPMAccessToken'
+    'Get-SEPMAdministrator'
+    'Get-SEPMClient'
+    'Get-SEPMCurrentVirusDef'
+    'Get-SEPMGroup'
+    'Get-SEPMGroupUpdateProvider'
+    'Get-SEPMLicense'
+    'Get-SEPMVersion'
+)
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

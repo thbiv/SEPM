@@ -1,4 +1,26 @@
 Function Get-SEPMGroupUpdateProvider {
+    <#
+    .SYNOPSIS
+        Returns a list of SEPM Group Update Providers
+    .DESCRIPTION
+        {{Long description}}
+    .PARAMETER ComputerName
+        The name of the SEPM server.
+    .PARAMETER Port
+        The port for the SEPM API. Defaults to 8446.
+    .PARAMETER Token
+        A valid token retrieved from the Get-SEPMAccessToken function.
+    .EXAMPLE
+        PS C:\> Get-SEPMGroupUpdateProvider -ComputerName 'server1' -Token <a valid token>
+
+        This example returns a full list of Group Update Providers clients.
+    .INPUTS
+        None
+    .OUTPUTS
+        PSObject
+    .LINK
+        https://apidocs.symantec.com/home/saep#_getgupdata
+    #>
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory=$True,Position=0)]

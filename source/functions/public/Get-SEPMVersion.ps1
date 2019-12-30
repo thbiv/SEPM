@@ -1,4 +1,24 @@
 Function Get-SEPMVersion {
+    <#
+    .SYNOPSIS
+        Returns the current version of SEPM that is installed. This fuction does not require authorization.
+    .DESCRIPTION
+        {{Long description}}
+    .PARAMETER ComputerName
+        The name of the SEPM server
+    .PARAMETER Port
+        The port for the SEPM API. Defaults to 8446.
+    .EXAMPLE
+        PS C:\> Get-SEPMVersion -ComputerName 'server1'
+
+        This example will return the cersion of SEPM that is installed on the server named server1.
+    .INPUTS
+        None
+    .OUTPUTS
+        PSObject
+    .LINK
+        https://apidocs.symantec.com/home/saep#_getversion
+    #>
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory=$True,

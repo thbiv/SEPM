@@ -1,4 +1,26 @@
 Function Get-SEPMLicense {
+    <#
+    .SYNOPSIS
+        Returns a list of SEPM licenses..
+    .DESCRIPTION
+        {{Long description}}
+    .PARAMETER ComputerName
+        The name of the SEPM server
+    .PARAMETER Port
+        The port for the SEPM API. Defaults to 8446.
+    .PARAMETER Token
+        A valid token retrieved from the Get-SEPMAccessToken function.
+    .EXAMPLE
+        PS C:\> Get-SEPMLicense -ComputerName 'server1' -Token <a valid token>
+
+        This example will return a list of licenses and their details.
+    .INPUTS
+        None
+    .OUTPUTS
+        PSObject
+    .LINK
+        https://apidocs.symantec.com/home/saep#_getalllicenses
+    #>
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory=$True,Position=0)]
