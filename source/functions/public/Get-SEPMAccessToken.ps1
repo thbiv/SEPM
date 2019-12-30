@@ -6,6 +6,10 @@ Function Get-SEPMAccessToken {
         Retrieves an Access Token to an On-Premise SEPM server for the purposes of using it's API by asking for credentials to
         a SEPM administrator. This function will ask for a username and password to pass and will return a UserToken object from
         the SEPM server. The Token property is the property to use when calling any other SEPM function except for Get-Version.
+    .PARAMETER ComputerName
+        The name of the SEPM server.
+    .PARAMETER Port
+        The port for the SEPM API. Defaults to 8446.
     .EXAMPLE
         PS C:\> Get-SEPMAccessToken
 
@@ -18,7 +22,12 @@ Function Get-SEPMAccessToken {
         https://apidocs.symantec.com/home/saep#_authenticateuser
     #>
     [CmdletBinding()]
-    Param()
+    Param(
+        [Parameter(Mandatory=$True,Position=0)]
+        [string]$ComputerName,
+
+        $Port = 8446
+    )
     [System.Net.ServicePointManager]::ServerCertificateValidationCallback = { $True }
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;
     $UserName = Read-Host -Prompt 'UserName'
@@ -29,7 +38,8 @@ Function Get-SEPMAccessToken {
         domain = ""
     }
     $Body = $Creds | ConvertTo-Json
-    $Response = Invoke-RestMethod -Uri https://sfhouav01:8446/sepm/api/v1/identity/authenticate -Method Post -Body $Body -ContentType 'application/json'
+    $URL = "https://{0}:{1}/sepm/api/v1/identity/authenticate" -f $ComputerName,$Port
+    $Response = Invoke-RestMethod -Uri $URL -Method Post -Body $Body -ContentType 'application/json'
     Remove-Variable Body,Creds,UserName,Password
     $Props = [ordered]@{
         'UserName' = $($Response.username)
