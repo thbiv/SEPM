@@ -28,7 +28,6 @@ Function Get-SEPMAccessToken {
 
         $Port = 8446
     )
-    [System.Net.ServicePointManager]::ServerCertificateValidationCallback = { $True }
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;
     $UserName = Read-Host -Prompt 'UserName'
     $Password = Read-Host -Prompt 'Password' -AsSecureString

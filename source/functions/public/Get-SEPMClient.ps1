@@ -56,12 +56,14 @@ Function Get-SEPMClient {
             Default {$OnlineStatus = 'Unknown'}
         }
 
-        $CharArray = $($_.avDefsetVersion).ToCharArray()
-        $VersionYear = $CharArray[0,1] -join ""
-        $VersionMonth = $CharArray[2,3] -join ""
-        $VersionDay = $CharArray[4,5] -join ""
-        $VersionRevision = $CharArray[6,7,8] -join ""
-        $VirusDefVersion = "{0}/{1}/20{2} rev. {3}" -f $VersionMonth,$VersionDay,$VersionYear,$VersionRevision
+        If ($Null -ne $($_.avDefsetVersion)) {
+            $CharArray = $($_.avDefsetVersion).ToCharArray()
+            $VersionYear = $CharArray[0,1] -join ""
+            $VersionMonth = $CharArray[2,3] -join ""
+            $VersionDay = $CharArray[4,5] -join ""
+            $VersionRevision = $CharArray[6,7,8] -join ""
+            $VirusDefVersion = "{0}/{1}/20{2} rev. {3}" -f $VersionMonth,$VersionDay,$VersionYear,$VersionRevision
+        } Else { $VirusDefVersion = $Null}
 
         $Props = @{
             'ComputerName' = $($_.computerName)
