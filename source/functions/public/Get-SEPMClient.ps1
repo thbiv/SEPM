@@ -67,6 +67,7 @@ Function Get-SEPMClient {
 
         $Props = @{
             'ComputerName' = $($_.computerName)
+            'Id' = $($_.uniqueId)
             'SEPVersion' = $($_.agentVersion)
             'LogonUserName' = $($_.logonUserName)
             'OperatingSystem' = $($_.operatingSystem)
