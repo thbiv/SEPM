@@ -22,7 +22,7 @@ Function Update-SEPMClientContent {
     .LINK
         https://apidocs.symantec.com/home/saep#_updatecontentcommand
     #>
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     Param (
         [Parameter(Mandatory=$True,Position=0)]
         [string]$ComputerName,
@@ -43,9 +43,11 @@ Function Update-SEPMClientContent {
     $Body = @{
         'computer_ids' = "$ComputerId"
     }
-    $Response = Invoke-RestMethod -Uri $URL -Headers $Header -Body $Body -Method Post -UseBasicParsing
-    $Props = @{
-        'CommandId' = $($Response.commandID_computer)
+    If ($PSCmdlet.ShouldProcess('Send Command to UpdateClient Content')) {
+        $Response = Invoke-RestMethod -Uri $URL -Headers $Header -Body $Body -Method Post -UseBasicParsing
+        $Props = @{
+            'CommandId' = $($Response.commandID_computer)
+        }
+        Write-Output $(New-Object -TypeName PSObject -Property $Props)
     }
-    Write-Output $(New-Object -TypeName PSObject -Property $Props)
 }
