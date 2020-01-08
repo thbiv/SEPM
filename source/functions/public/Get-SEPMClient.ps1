@@ -56,6 +56,18 @@ Function Get-SEPMClient {
             Default {$OnlineStatus = 'Unknown'}
         }
 
+        Switch ($($_.rebootRequired)) {
+            0 {$RebootRequired = $False}
+            1 {$RebootRequired = $True}
+            Default {$RebootRequired = 'Unknown'}
+        }
+
+        Switch($($_.rebootReason)) {
+            'ACDC=7;' {$RebootReason = 'The Application and device control component has a driver configuration change to apply.'}
+            'Installer=4;' {$RebootReason = 'The Installer component has a task to complete from install.'}
+            Default {$RebootReason = $($_.rebootReason)}
+        }
+
         If ($Null -ne $($_.avDefsetVersion)) {
             $CharArray = $($_.avDefsetVersion).ToCharArray()
             $VersionYear = $CharArray[0,1] -join ""
@@ -77,6 +89,8 @@ Function Get-SEPMClient {
             'LastUpdateTime' = $(Get-SEPMEpochDate $($_.lastUpdateTime))
             'GroupUpdateProvider' = $($_.groupUpdateProvider)
             'VirusDefVersion' = $VirusDefVersion
+            'RebootRequired' = $RebootRequired
+            'RebootReason' = $RebootReason
         }
         Write-Output $(New-Object -TypeName PSObject -Property $Props)
     }
