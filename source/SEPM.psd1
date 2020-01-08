@@ -4,7 +4,7 @@
 RootModule = 'SEPM.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.3.10'
+ModuleVersion = '0.4.11'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -72,6 +72,7 @@ FunctionsToExport = @(
     'Get-SEPMVersion'
     'Update-SEPMClientContent'
     'Get-SEPMCommandStatus'
+    'Get-SEPMEvent'
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
