@@ -4,7 +4,7 @@
 RootModule = 'SEPM.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.4.12'
+ModuleVersion = '0.4.13'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
