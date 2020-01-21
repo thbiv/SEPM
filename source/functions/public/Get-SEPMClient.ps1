@@ -77,6 +77,16 @@ Function Get-SEPMClient {
             $VirusDefVersion = "{0}/{1}/20{2} rev. {3}" -f $VersionMonth,$VersionDay,$VersionYear,$VersionRevision
         } Else { $VirusDefVersion = $Null}
 
+        Try {
+            $EAP = $ErrorActionPreference
+            $ErrorActionPreference = 'Continue'
+            $VirusDefDate = ([datetime]($VirusDefVersion -split " "))[0]
+        } Catch {
+            $VirusDefVersion = 'Unknown'
+            $VirusDefDate = 'Unknown'
+        } Finally {
+            $ErrorActionPreference = $EAP
+        }
         $Props = @{
             'ComputerName' = $($_.computerName)
             'Id' = $($_.uniqueId)
@@ -89,6 +99,7 @@ Function Get-SEPMClient {
             'LastUpdateTime' = $(Get-SEPMEpochDate $($_.lastUpdateTime))
             'GroupUpdateProvider' = $($_.groupUpdateProvider)
             'VirusDefVersion' = $VirusDefVersion
+            'VirusDefDate' = $VirusDefDate
             'RebootRequired' = $RebootRequired
             'RebootReason' = $RebootReason
         }
