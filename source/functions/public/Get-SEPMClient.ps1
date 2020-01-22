@@ -67,7 +67,7 @@ Function Get-SEPMClient {
             'Installer=4;' {$RebootReason = 'The Installer component has a task to complete from install.'}
             Default {$RebootReason = "$($_.rebootReason)"}
         }
-
+        Write-Verbose "[$($_.computerName)] avDefSetVersion: $($_.avDefsetVersion)"
         If ($Null -ne $($_.avDefsetVersion)) {
             $CharArray = $($_.avDefsetVersion).ToCharArray()
             $VersionYear = $CharArray[0,1] -join ""
@@ -75,12 +75,14 @@ Function Get-SEPMClient {
             $VersionDay = $CharArray[4,5] -join ""
             $VersionRevision = $CharArray[6,7,8] -join ""
             $VirusDefVersion = "{0}/{1}/20{2} rev. {3}" -f $VersionMonth,$VersionDay,$VersionYear,$VersionRevision
+            Write-Verbose "[$($_.computerName)] VirusDefVersion:  $VirusDefVersion"
         } Else { $VirusDefVersion = $Null}
 
         Try {
             $EAP = $ErrorActionPreference
             $ErrorActionPreference = 'Continue'
-            $VirusDefDate = ([datetime]($VirusDefVersion -split " "))[0]
+            $VirusDefDate = [datetime]($VirusDefVersion -split " ")[0]
+            Write-Verbose "[$($_.computerName)] VirusDefDate: $VirusDefDate"
         } Catch {
             $VirusDefVersion = 'Unknown'
             $VirusDefDate = 'Unknown'
