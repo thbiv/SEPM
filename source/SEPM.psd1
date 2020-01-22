@@ -4,7 +4,7 @@
 RootModule = 'SEPM.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.4.17'
+ModuleVersion = '0.4.18'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -111,7 +111,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Add VirusDefDate property'
+        ReleaseNotes = 'add support for new reboot reason'
 
     } # End of PSData hashtable
 

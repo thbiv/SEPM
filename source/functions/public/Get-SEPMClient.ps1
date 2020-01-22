@@ -65,6 +65,7 @@ Function Get-SEPMClient {
         Switch($($_.rebootReason)) {
             'ACDC=7;' {$RebootReason = 'The Application and device control component has a driver configuration change to apply.'}
             'Installer=4;' {$RebootReason = 'The Installer component has a task to complete from install.'}
+            'ACDC=7;Installer=4;' {$RebootReason = 'The Application and device control component has a driver configuration change to apply. The Installer component has a task to complete from install.'}
             Default {$RebootReason = "$($_.rebootReason)"}
         }
         Write-Verbose "[$($_.computerName)] avDefSetVersion: $($_.avDefsetVersion)"
