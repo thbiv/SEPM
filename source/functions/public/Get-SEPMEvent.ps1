@@ -28,7 +28,7 @@ Function Get-SEPMEvent {
         [string]$Token
     )
 
-    $URL = "https://{0}:{1}/sepm/api/v1/events/critical" -f $ServerName,$Port
+    $URL = "https://{0}:{1}/sepm/api/v1/events/critical" -f $ComputerName,$Port
     $Header = @{
         'Authorization' = "Bearer $Token"
     }
