@@ -4,7 +4,7 @@
 RootModule = 'SEPM.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.4.19'
+ModuleVersion = '0.5.20'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -73,6 +73,8 @@ FunctionsToExport = @(
     'Update-SEPMClientContent'
     'Get-SEPMCommandStatus'
     'Get-SEPMEvent'
+    'Start-SEPMClientActiveScan'
+    'Start-SEPMClientFullScan'
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -111,7 +113,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'add support for new reboot reason'
+        ReleaseNotes = 'add active and full scan functions'
 
     } # End of PSData hashtable
 
