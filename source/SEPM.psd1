@@ -4,7 +4,7 @@
 RootModule = 'SEPM.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.5.20'
+ModuleVersion = '0.5.21'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -113,7 +113,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'add active and full scan functions'
+        ReleaseNotes = 'use Get-Credential instad of Read-Host'
 
     } # End of PSData hashtable
 

@@ -43,9 +43,12 @@ Function Get-SEPMAccessToken {
         $UserName = $Credential.UserName
         $Password = $Credential.GetNetworkCredential().Password
     } Else {
-        $UserName = Read-Host -Prompt 'UserName'
-        $Password = Read-Host -Prompt 'Password' -AsSecureString
-        $Password = "$([System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($Password)))"
+        $Credential = Get-Credential -Message 'SEPM Admin Credentials'
+        $UserName = $Credential.UserName
+        $Password = $Credential.GetNetworkCredential().Password
+        #$UserName = Read-Host -Prompt 'UserName'
+        #$Password = Read-Host -Prompt 'Password' -AsSecureString
+        #$Password = "$([System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($Password)))"
     }
     $Creds = @{
         username = "$UserName"
