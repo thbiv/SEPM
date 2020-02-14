@@ -4,7 +4,7 @@
 RootModule = 'SEPM.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.5.21'
+ModuleVersion = '0.6.22'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -75,6 +75,7 @@ FunctionsToExport = @(
     'Get-SEPMEvent'
     'Start-SEPMClientActiveScan'
     'Start-SEPMClientFullScan'
+    'Get-SEPMClientCountByVersion'
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -113,7 +114,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'use Get-Credential instad of Read-Host'
+        ReleaseNotes = 'added Get-SEPMClientCountByVersion'
 
     } # End of PSData hashtable
 
