@@ -1,7 +1,7 @@
 ---
 external help file: SEPM-help.xml
 Module Name: SEPM
-online version: 
+online version: https://github.com/thbiv/SEPM/blob/master/docs/Get-SEPMClientActiveScan.md
 schema: 2.0.0
 ---
 
