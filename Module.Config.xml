@@ -1,0 +1,26 @@
+<config>
+  <deployment>
+    <repository>PSGallery</repository>
+    <onlinehelp>
+    </onlinehelp>
+    <filehash>C:\Users\thbarratt\Documents\FileHashData\SEPM</filehash>
+    <testresults>C:\Users\thbarratt\Documents\TestResults\PSLocalGallery</testresults>
+  </deployment>
+  <manifest>
+    <guid>88c8fbf3-243a-4d82-b1bc-daa7b42adcfa</guid>
+    <author>Thomas Barratt</author>
+    <moduleversion>0.6.22</moduleversion>
+    <description>Module for using the Symantec Endpoint Protection Manager API</description>
+    <copyright>2019-2020 Thomas Barratt</copyright>
+    <projecturi>https://github.com/thbiv/SEPM</projecturi>
+    <licenseuri>https://github.com/thbiv/SEPM/blob/master/LICENSE</licenseuri>
+    <releasenotes>https://github.com/thbiv/SEPM/blob/master/Release-Notes.md</releasenotes>
+    <tags>SEPM,Symantec,Endpoint,Protection,API,Windows</tags>
+  </manifest>
+  <requiredmodules>
+    <module name="InvokeBuild" repository="PSGallery" />
+    <module name="Pester" repository="PSGallery" requiredversion="4.10.1" />
+    <module name="PSScriptAnalyzer" repository="PSGallery" />
+    <module name="platyPS" repository="PSGallery" />
+  </requiredmodules>
+</config>
